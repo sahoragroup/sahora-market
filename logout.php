@@ -1,0 +1,1 @@
+<?php require 'includes/config.php';$_SESSION=[];session_regenerate_id(true);redirect('index.php');
