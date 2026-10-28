@@ -3,7 +3,7 @@ if (session_status() === PHP_SESSION_NONE) session_start();
 const DB_HOST = '127.0.0.1';
 const DB_NAME = 'sahora_market';
 const DB_USER = 'root';
-const DB_PASS = '';
+const DB_PASS = 'Password@123';
 function db(): PDO { static $pdo; if (!$pdo) { $pdo = new PDO('mysql:host='.DB_HOST.';dbname='.DB_NAME.';charset=utf8mb4',DB_USER,DB_PASS,[PDO::ATTR_ERRMODE=>PDO::ERRMODE_EXCEPTION,PDO::ATTR_DEFAULT_FETCH_MODE=>PDO::FETCH_ASSOC]); } return $pdo; }
 function e($s): string {return htmlspecialchars((string)$s,ENT_QUOTES,'UTF-8');}
 function money($n): string {return 'Rs. '.number_format((float)$n,2);}

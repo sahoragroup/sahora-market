@@ -1,1 +1,61 @@
-<?php $pageTitle='Luxury Everyday Shopping';require 'includes/header.php';$items=array_slice(products(),0,8);$categories=db()->query('SELECT * FROM categories ORDER BY id LIMIT 10')->fetchAll();?><section class="hero"><div class="container"><div class="row align-items-center min-vh-hero"><div class="col-lg-6 py-5"><div class="eyebrow mb-3">✦ THE ART OF EVERYDAY SHOPPING</div><h1>EVERYTHING<br>YOU NEED.<br><em>ALL IN ONE</em><br>PLACE.</h1><p class="hero-sub mt-4">Discover quality products at unbeatable prices. Shop retail or buy wholesale with SAHORA MARKET.</p><div class="d-flex flex-wrap gap-3 mt-4"><a href="shop.php" class="btn btn-gold btn-lg">SHOP NOW <i class="bi bi-arrow-up-right ms-2"></i></a><a href="wholesale.php" class="btn btn-outline-gold btn-lg">EXPLORE WHOLESALE</a></div><div class="hero-stats mt-5"><div><b>10+</b><span>Categories</span></div><div><b>100%</b><span>Quality focused</span></div><div><b>24/7</b><span>Online shopping</span></div></div></div><div class="col-lg-6 hero-visual"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=85" alt="Fresh market grocery selection"><div class="hero-float">✦ CURATED FOR EVERYDAY LIVING</div></div></div></div></section><section class="benefit-strip"><div class="container d-flex flex-wrap justify-content-between gap-3 py-3"><span><i class="bi bi-truck"></i> Reliable Delivery</span><span><i class="bi bi-shield-check"></i> Quality Products</span><span><i class="bi bi-tags"></i> Affordable Prices</span><span><i class="bi bi-box-seam"></i> Bulk Orders Welcome</span></div></section><section class="container section-space" id="categories"><div class="section-top"><div><div class="eyebrow">EXPLORE THE COLLECTION</div><h2>Shop by <em>Category</em></h2></div><a class="text-gold" href="shop.php">VIEW ALL PRODUCTS ↗</a></div><div class="row g-3"><?php foreach($categories as $c):?><div class="col-6 col-md-4 col-lg-2"><a href="shop.php?category=<?=$c['id']?>" class="category-card"><img loading="lazy" src="<?=e($c['image'])?>" alt="<?=e($c['name'])?>"><span><?=e($c['name'])?> <i class="bi bi-arrow-up-right"></i></span></a></div><?php endforeach;?></div></section><section class="container section-space"><div class="section-top"><div><div class="eyebrow">HANDPICKED FOR YOU</div><h2>Featured <em>Products</em></h2></div><a class="text-gold" href="shop.php">SHOP ALL ↗</a></div><div class="row g-4"><?php foreach($items as $item)require 'includes/product_card.php';?></div></section><section class="container section-space"><div class="wholesale-banner"><div class="eyebrow">SAHORA BUSINESS</div><h2>BUY MORE.<br><em>SAVE MORE.</em></h2><p>Special wholesale prices for businesses, retailers and bulk buyers.</p><a href="wholesale.php" class="btn btn-gold">REQUEST WHOLESALE QUOTE ↗</a></div></section><section class="container section-space text-center"><div class="eyebrow">WHY SHOP WITH US</div><h2>The SAHORA <em>Promise</em></h2><div class="row g-4 mt-4"><?php foreach([['bi-award','Quality Products','Carefully selected everyday essentials'],['bi-wallet2','Better Value','Fair retail and wholesale pricing'],['bi-shield-lock','Secure Experience','Your account and orders matter'],['bi-truck','Delivery Focused','Convenient shopping across Sri Lanka']] as $b):?><div class="col-md-3"><div class="promise"><i class="bi <?=e($b[0])?>"></i><h5><?=e($b[1])?></h5><p><?=e($b[2])?></p></div></div><?php endforeach;?></div></section><?php require 'includes/footer.php';?>
+<?php $pageTitle = 'Luxury Everyday Shopping';
+require 'includes/header.php';
+$items = array_slice(products(), 0, 8);
+$categories = db()->query('SELECT * FROM categories ORDER BY id LIMIT 10')->fetchAll(); ?><section class="hero">
+    <div class="container">
+        <div class="row align-items-center min-vh-hero">
+            <div class="col-lg-6 py-5">
+                <div class="eyebrow mb-3">✦ THE ART OF EVERYDAY SHOPPING</div>
+                <h1>EVERYTHING<br>YOU NEED.<br><em>ALL IN ONE</em><br>PLACE.</h1>
+                <p class="hero-sub mt-4">Discover quality products at unbeatable prices. Shop retail or buy wholesale with SAHORA MARKET.</p>
+                <div class="d-flex flex-wrap gap-3 mt-4"><a href="shop.php" class="btn btn-gold btn-lg">SHOP NOW <i class="bi bi-arrow-up-right ms-2"></i></a><a href="wholesale.php" class="btn btn-outline-gold btn-lg">EXPLORE WHOLESALE</a></div>
+                <div class="hero-stats mt-5">
+                    <div><b>10+</b><span>Categories</span></div>
+                    <div><b>100%</b><span>Quality focused</span></div>
+                    <div><b>24/7</b><span>Online shopping</span></div>
+                </div>
+            </div>
+            <div class="col-lg-6 hero-visual"><img src="https://images.unsplash.com/photo-1542838132-92c53300491e?w=1200&q=85" alt="Fresh market grocery selection">
+                <div class="hero-float">✦ CURATED FOR EVERYDAY LIVING</div>
+            </div>
+        </div>
+    </div>
+</section>
+<section class="benefit-strip">
+    <div class="container d-flex flex-wrap justify-content-between gap-3 py-3"><span><i class="bi bi-truck"></i> Reliable Delivery</span><span><i class="bi bi-shield-check"></i> Quality Products</span><span><i class="bi bi-tags"></i> Affordable Prices</span><span><i class="bi bi-box-seam"></i> Bulk Orders Welcome</span></div>
+</section>
+<section class="container section-space" id="categories">
+    <div class="section-top">
+        <div>
+            <div class="eyebrow">EXPLORE THE COLLECTION</div>
+            <h2>Shop by <em>Category</em></h2>
+        </div><a class="text-gold" href="shop.php">VIEW ALL PRODUCTS ↗</a>
+    </div>
+    <div class="row g-3"><?php foreach ($categories as $c): ?><div class="col-6 col-md-4 col-lg-2"><a href="shop.php?category=<?= $c['id'] ?>" class="category-card"><img loading="lazy" src="<?= e($c['image']) ?>" alt="<?= e($c['name']) ?>"><span><?= e($c['name']) ?> <i class="bi bi-arrow-up-right"></i></span></a></div><?php endforeach; ?></div>
+</section>
+<section class="container section-space">
+    <div class="section-top">
+        <div>
+            <div class="eyebrow">HANDPICKED FOR YOU</div>
+            <h2>Featured <em>Products</em></h2>
+        </div><a class="text-gold" href="shop.php">SHOP ALL ↗</a>
+    </div>
+    <div class="row g-4"><?php foreach ($items as $item) require 'includes/product_card.php'; ?></div>
+</section>
+<section class="container section-space">
+    <div class="wholesale-banner">
+        <div class="eyebrow">SAHORA BUSINESS</div>
+        <h2>BUY MORE.<br><em>SAVE MORE.</em></h2>
+        <p>Special wholesale prices for businesses, retailers and bulk buyers.</p><a href="wholesale.php" class="btn btn-gold">REQUEST WHOLESALE QUOTE ↗</a>
+    </div>
+</section>
+<section class="container section-space text-center">
+    <div class="eyebrow">WHY SHOP WITH US</div>
+    <h2>The SAHORA <em>Promise</em></h2>
+    <div class="row g-4 mt-4"><?php foreach ([['bi-award', 'Quality Products', 'Carefully selected everyday essentials'], ['bi-wallet2', 'Better Value', 'Fair retail and wholesale pricing'], ['bi-shield-lock', 'Secure Experience', 'Your account and orders matter'], ['bi-truck', 'Delivery Focused', 'Convenient shopping across Sri Lanka']] as $b): ?><div class="col-md-3">
+                <div class="promise"><i class="bi <?= e($b[0]) ?>"></i>
+                    <h5><?= e($b[1]) ?></h5>
+                    <p><?= e($b[2]) ?></p>
+                </div>
+            </div><?php endforeach; ?></div>
+</section><?php require 'includes/footer.php'; ?>
